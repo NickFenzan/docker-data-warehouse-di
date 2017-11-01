@@ -1,0 +1,29 @@
+group_name,appointment_type
+1 Week Follow Up,1 Week
+Long Term Follow Up,3 Month Follow Up
+Long Term Follow Up,6 Month Follow Up
+Other,DVT Study
+Free Evaluation,Educational Visit
+New Patient,Established Full Consult
+Procedure,EVCA
+Procedure,EVTA
+Procedure,EVTA MP
+Free Evaluation,Free Evaluation
+Other,Incision and Drainage
+Procedure,Medical Sclero
+Procedure,Microphlebectomy
+Procedure,MOCA
+New Patient,New Patient
+Other,Office Visit
+Other,Ultrasound
+Procedure,Varithena
+VeinErase,VeinErase
+VeinErase,VeinErase - Facial
+VeinErase,VeinErase Legs
+VeinErase,VeinErase MESSA
+VeinErase,VeinErase Petite
+Other,VeinErase Short Term Follow Up
+VeinErase,VeinErase Special
+Procedure,VenaSeal
+Procedure,VVEVCA
+Long Term Follow Up,Yearly Follow Up
