@@ -429,7 +429,7 @@
     <created_user>-</created_user>
     <created_date>2017/09/01 16:58:10.521</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2017/11/01 16:20:18.991</modified_date>
+    <modified_date>2018/04/13 09:31:57.938</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -1096,8 +1096,8 @@ WHERE `Patient Athena ID`.`athena_patient_id` = ?</sql>
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>city</name>
-        <field>city</field>
+        <name>athena_department_name</name>
+        <field>athena_department_name</field>
         <condition>=</condition>
         <name2 />
       </key>
@@ -1139,7 +1139,7 @@ WHERE `Patient Athena ID`.`athena_patient_id` = ?</sql>
       </field>
       <field>
         <name>svc dprtmnt</name>
-        <rename>city</rename>
+        <rename>athena_department_name</rename>
       </field>
       <field>
         <name>appttype</name>
@@ -1151,6 +1151,7 @@ WHERE `Patient Athena ID`.`athena_patient_id` = ?</sql>
       </field>
       <field>
         <name>appt_start</name>
+        <rename />
       </field>
       <field>
         <name>scheduled</name>

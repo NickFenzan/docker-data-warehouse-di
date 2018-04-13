@@ -100,6 +100,7 @@ CREATE TABLE `Site` (
     `city` VARCHAR(40) NOT NULL,
     `state` VARCHAR(2) NOT NULL,
     `zip` VARCHAR(5) NOT NULL,
+	`athena_department_name` VARCHAR(40) NOT NULL,
     `opened` DATETIME NOT NULL,
     `closed` DATETIME,
     PRIMARY KEY (`id`)
