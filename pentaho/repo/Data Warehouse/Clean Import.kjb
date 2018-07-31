@@ -8,7 +8,7 @@
   <created_user>-</created_user>
   <created_date>2017/09/05 09:11:22.463</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2017/12/04 12:32:21.942</modified_date>
+  <modified_date>2018/07/31 10:32:52.567</modified_date>
   <parameters>
     </parameters>
   <connection>
@@ -370,7 +370,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>624</xloc>
+      <xloc>576</xloc>
       <yloc>208</yloc>
     </entry>
     <entry>
@@ -536,7 +536,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>480</xloc>
+      <xloc>448</xloc>
       <yloc>208</yloc>
     </entry>
   </entries>

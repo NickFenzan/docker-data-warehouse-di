@@ -1,0 +1,62 @@
+00001,Facial VeinErase <10 Minutes,Facial VeinErase <10 Minutes
+00002,Facial VeinErase >10 Minutes,Facial VeinErase >10 Minutes
+00015,VeinGogh Legs - 30 Minutes,VeinGogh Legs - 30 Minutes
+00030,VeinGogh Legs - 15 Minutes,VeinGogh Legs - 15 Minutes
+29582,Application of multi-layer compression system,Application of multi-layer compression system; thigh and leg
+36011,Catheter Placement,Catheter Placement
+36468-1,VeinErase - 1 Treatment,VeinErase - 1 Treatment
+36468-12,VeinErase - 12 Treatments,VeinErase - 12 Treatments
+36468-2,VeinErase - 2 Treatments,VeinErase - 2 Treatments
+36468-3,VeinErase - 3 Treatments,VeinErase - 3 Treatments
+36468-4,VeinErase - 4 Treatments,VeinErase - 4 Treatments
+36468-5,VeinErase - 5 Treatments,VeinErase - 5 Treatments
+36468-6,VeinErase - 6 Treatments,VeinErase - 6 Treatments
+36468-9,VeinErase - 9 Treatments,VeinErase - 9 Treatments
+36468-FRE,VeinErase - Free,VeinErase - Free
+36468-P.5,VeinErase Petite - 1/2 Treatment,VeinErase Petite - 1/2 Treatment
+36468-P1,VeinErase Petite - 1 Treatment,VeinErase Petite - 1 Treatment
+36468-P3,VeinErase Petite - 3 Treatments,VeinErase Petite - 3 Treatments
+36468-P6,VeinErase Petite - 6 Treatments,VeinErase Petite - 6 Treatments
+36468-PAI,VeinErase Treatment - Prepaid,VeinErase Treatment - Prepaid
+37204,Occlusion/Embolization,Occlusion/Embolization
+37241,Occlusion/Embolization,"Vascular embolization or occlusion, inclusive of all radiological supervision and interpretation"
+75894,Transcatheter Therapy,Transcatheter Therapy
+99024,Post-op/NCHR,Post-op/NCHR
+99201,New Patient - Prob. Focused,New Patient - Prob. Focused
+99202,New Patient -  Expanded Prob.,New Patient -  Expanded Prob.
+99203,New Patient - Detailed,New Patient - Detailed
+99204,New Patient - Comprehensive 1,New Patient - Comprehensive 1
+99205,New Patient - Comprehensive 2,New Patient - Comprehensive 2
+99211,Established Patient - NonPhysician,Established Patient - NonPhysician
+99212,Established Patient - Prob. Focused,Established Patient - Prob. Focused
+99213,Established Patient - Expanded Prob.,Established Patient - Expanded Prob.
+99214,Established Patient - Detailed,Established Patient - Detailed
+99215,Established Patient - Comprehensive,Established Patient - Comprehensive
+Bounced C,Bounced Check,Bounced Check
+CVRDRM,Coverderm,Coverderm
+I87.2,Venous Insufficiency (Not a valid procedure code),Venous Insufficiency (Not a valid procedure code)
+Interest,Interest,Interest
+ITS,It Stays,It Stays
+LP,Limb Protector,Limb Protector
+MISC00001,Facial VeinErase <10 Minutes,Facial VeinErase <10 Minutes
+MISC00002,Facial VeinErase >10 Minutes,Facial VeinErase >10 Minutes
+MISC36468,VeinErase - 1 Treatment,VeinErase - 1 Treatment
+"MISC36468,03TX",VeinErase - 3 Treatments,VeinErase - 3 Treatments
+"MISC36468,06TX",VeinErase - 6 Treatments,VeinErase - 6 Treatments
+"MISC36468,09TX",VeinErase - 9 Treatments,VeinErase - 9 Treatments
+"MISC36468,12TX",VeinErase - 12 Treatments,VeinErase - 12 Treatments
+"MISC36468,PAID",VeinErase Treatment - Prepaid,VeinErase Treatment - Prepaid
+"MISC36468,SP",VeinErase - Special,VeinErase - Special
+MISC36468P,VeinErase Petite - 1 Treatment,VeinErase Petite - 1 Treatment
+"MISC36468P,03TX",VeinErase Petite - 3 Treatments,VeinErase Petite - 3 Treatments
+"MISC36468P,06TX",VeinErase Petite - 6 Treatments,VeinErase Petite - 6 Treatments
+MISC36468S150,VeinErase - Special,VeinErase - Special
+MISCA6530,Compression stocking BK18-30,"GRADIENT COMPRESSION STOCKING, BELOW KNEE, 18-30 MMHG, EACH"
+MISCA6533,Gc stocking thighlngth 18-30,"GRADIENT COMPRESSION STOCKING, THIGH LENGTH, 18-30 MMHG, EACH"
+MISCA6539,Gc stocking waistlngth 18-30,"GRADIENT COMPRESSION STOCKING, WAIST LENGTH, 18-30 MMHG, EACH"
+MISCBOUNCEDCH,Bounced Check,Bounced Check
+MISCSHIP,Shipping & Handling,Shipping & Handling
+NOCHARGE,No Charge,No Charge
+NOSHOW,No Show,No Show
+PEC,Unknown,Unknown
+TRNSFR,Balance Transfer,Balance Transfer

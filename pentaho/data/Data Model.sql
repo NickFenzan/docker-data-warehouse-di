@@ -14,6 +14,8 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE `Appointment` (
     `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+    `athena_id` INTEGER(11) NULL,
+    `openemr_id` INTEGER(11) NULL,
     `patient_id` INTEGER(11) NOT NULL,
     `site_id` INTEGER(11) NOT NULL,
     `appointment_type` VARCHAR(50) NOT NULL,

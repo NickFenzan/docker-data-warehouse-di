@@ -1,0 +1,41 @@
+Layout {
+  FileType : "delimited"
+  Delimiter : ","
+  Street : "0"
+  City : "2"
+  State : "3"
+  Zip : "4"
+  DefaultCountry : "USA"
+  SkipRows : "1"
+  TextCodec : "System"
+  FieldDefinitions {
+    0 {
+      Name : "street"
+      Type : "string"
+    }
+    1 {
+      Name : "street2"
+      Type : "string"
+    }
+    2 {
+      Name : "city"
+      Type : "string"
+    }
+    3 {
+      Name : "state"
+      Type : "string"
+    }
+    4 {
+      Name : "zip"
+      Type : "string"
+    }
+    5 {
+      Name : "opened"
+      Type : "string"
+    }
+    6 {
+      Name : "closed"
+      Type : "string"
+    }
+  }
+}

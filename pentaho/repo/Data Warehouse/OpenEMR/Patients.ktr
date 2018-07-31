@@ -429,21 +429,21 @@
     <created_user>-</created_user>
     <created_date>2017/09/12 13:06:33.824</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2017/09/12 13:53:41.089</modified_date>
-    <key_for_session_key />
+    <modified_date>2018/05/23 15:53:39.062</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
   <connection>
     <name>Data Warehouse</name>
-    <server>10.1.1.133</server>
-    <type>MARIADB</type>
+    <server>${DB_HOST}</server>
+    <type>MYSQL</type>
     <access>Native</access>
-    <database>data_warehouse</database>
+    <database>${DB_NAME}</database>
     <port>3306</port>
-    <username>reporting</username>
-    <password>Encrypted 2be98afc86aea9b88a71cbc46db9ba18b</password>
+    <username>${DB_USER}</username>
+    <password>${DB_PASSWORD}</password>
     <servername />
     <data_tablespace />
     <index_tablespace />
@@ -488,13 +488,13 @@
   </connection>
   <connection>
     <name>OpenEMR</name>
-    <server>miller.vein</server>
+    <server>${OPENEMR_HOST}</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>openemr</database>
+    <database>${OPENEMR_NAME}</database>
     <port>3306</port>
-    <username>reporting</username>
-    <password>Encrypted 2be98afc86aa7f296ae09a162ca9ba1dd</password>
+    <username>${OPENEMR_USER}</username>
+    <password>${OPENEMR_PASSWORD}</password>
     <servername />
     <data_tablespace />
     <index_tablespace />
@@ -623,135 +623,7 @@
     </hop>
   </order>
   <step>
-    <name>Table input</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>OpenEMR</connection>
-    <sql>SELECT 
-p.fname, p.lname, p.dob, p.sex, 
-p.street, p.city, p.state, p.postal_code,
-p.phone_home, p.phone_biz, p.phone_cell, p.email,
-r.fname, r.lname,
-m.name
-FROM patient_data p
-LEFT JOIN referring_physician r 
-ON p.referring_physician = r.id
-LEFT JOIN marketing_campaign m
-ON p.marketing_campaign = m.id</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>16</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>fname</name>
-        <rename>patient_first_name</rename>
-      </field>
-      <field>
-        <name>lname</name>
-        <rename>patient_last_name</rename>
-      </field>
-      <field>
-        <name>DOB</name>
-        <rename />
-      </field>
-      <field>
-        <name>sex</name>
-        <rename />
-      </field>
-      <field>
-        <name>street</name>
-        <rename />
-      </field>
-      <field>
-        <name>city</name>
-        <rename />
-      </field>
-      <field>
-        <name>state</name>
-        <rename />
-      </field>
-      <field>
-        <name>postal_code</name>
-        <rename />
-      </field>
-      <field>
-        <name>phone_home</name>
-        <rename />
-      </field>
-      <field>
-        <name>phone_biz</name>
-        <rename />
-      </field>
-      <field>
-        <name>phone_cell</name>
-        <rename />
-      </field>
-      <field>
-        <name>email</name>
-        <rename />
-      </field>
-      <field>
-        <name>fname_1</name>
-        <rename>referring_physician_first_name</rename>
-      </field>
-      <field>
-        <name>lname_1</name>
-        <rename>referring_physician_last_name</rename>
-      </field>
-      <field>
-        <name>name</name>
-        <rename>marketing_source_name</rename>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>96</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Referring Physician to ID</name>
+    <name>Calculate Age</name>
     <type>SimpleMapping</type>
     <description />
     <distribute>Y</distribute>
@@ -763,7 +635,7 @@ ON p.marketing_campaign = m.id</sql>
     </partitioning>
     <specification_method>rep_name</specification_method>
     <trans_object_id />
-    <trans_name>Referring Physician Name to ID</trans_name>
+    <trans_name>Calculate Age</trans_name>
     <filename />
     <directory_path>/Data Warehouse/SubTransformations</directory_path>
     <mappings>
@@ -775,12 +647,8 @@ ON p.marketing_campaign = m.id</sql>
           <rename_on_output>Y</rename_on_output>
           <description />
           <connector>
-            <parent>referring_physician_first_name</parent>
-            <child>first name</child>
-          </connector>
-          <connector>
-            <parent>referring_physician_last_name</parent>
-            <child>last name</child>
+            <parent>DOB</parent>
+            <child>dob</child>
           </connector>
         </mapping>
       </input>
@@ -791,10 +659,6 @@ ON p.marketing_campaign = m.id</sql>
           <main_path>Y</main_path>
           <rename_on_output>N</rename_on_output>
           <description />
-          <connector>
-            <parent>id</parent>
-            <child>referring_physician_id</child>
-          </connector>
         </mapping>
       </output>
       <parameters>
@@ -809,14 +673,14 @@ ON p.marketing_campaign = m.id</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
+      <xloc>944</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Sort Referring docs</name>
-    <type>FilterRows</type>
+    <name>Clean Email</name>
+    <type>SimpleMapping</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -825,16 +689,38 @@ ON p.marketing_campaign = m.id</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>Tag Referring Doc Referral Source</send_true_to>
-    <send_false_to>Clean Home Phone</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>referring_physician_id</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue />
-      </condition>
-    </compare>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>Valid Email</trans_name>
+    <filename />
+    <directory_path>/Data Warehouse/SubTransformations</directory_path>
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>email</parent>
+            <child>email</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -843,41 +729,8 @@ ON p.marketing_campaign = m.id</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
+      <xloc>1024</xloc>
       <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Tag Referring Doc Referral Source</name>
-    <type>SetValueConstant</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>marketing_source_name</name>
-        <value>Referring Physician</value>
-        <mask />
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>480</xloc>
-      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1054,118 +907,6 @@ ON p.marketing_campaign = m.id</sql>
     </GUI>
   </step>
   <step>
-    <name>Calculate Age</name>
-    <type>SimpleMapping</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>rep_name</specification_method>
-    <trans_object_id />
-    <trans_name>Calculate Age</trans_name>
-    <filename />
-    <directory_path>/Data Warehouse/SubTransformations</directory_path>
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>DOB</parent>
-            <child>dob</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>944</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Clean Email</name>
-    <type>SimpleMapping</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>rep_name</specification_method>
-    <trans_object_id />
-    <trans_name>Valid Email</trans_name>
-    <filename />
-    <directory_path>/Data Warehouse/SubTransformations</directory_path>
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>email</parent>
-            <child>email</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1024</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Clean Zip</name>
     <type>SimpleMapping</type>
     <description />
@@ -1217,62 +958,6 @@ ON p.marketing_campaign = m.id</sql>
     </remotesteps>
     <GUI>
       <xloc>800</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Valid State</name>
-    <type>SimpleMapping</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>rep_name</specification_method>
-    <trans_object_id />
-    <trans_name>Valid State</trans_name>
-    <filename />
-    <directory_path>/Data Warehouse/SubTransformations</directory_path>
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>state</parent>
-            <child>short state</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>864</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1441,6 +1126,255 @@ ON p.marketing_campaign = m.id</sql>
     </GUI>
   </step>
   <step>
+    <name>Referring Physician to ID</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>Referring Physician Name to ID</trans_name>
+    <filename />
+    <directory_path>/Data Warehouse/SubTransformations</directory_path>
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>referring_physician_first_name</parent>
+            <child>first name</child>
+          </connector>
+          <connector>
+            <parent>referring_physician_last_name</parent>
+            <child>last name</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+          <connector>
+            <parent>id</parent>
+            <child>referring_physician_id</child>
+          </connector>
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>fname</name>
+        <rename>patient_first_name</rename>
+      </field>
+      <field>
+        <name>lname</name>
+        <rename>patient_last_name</rename>
+      </field>
+      <field>
+        <name>DOB</name>
+      </field>
+      <field>
+        <name>sex</name>
+      </field>
+      <field>
+        <name>street</name>
+      </field>
+      <field>
+        <name>city</name>
+      </field>
+      <field>
+        <name>state</name>
+      </field>
+      <field>
+        <name>postal_code</name>
+      </field>
+      <field>
+        <name>phone_home</name>
+      </field>
+      <field>
+        <name>phone_biz</name>
+      </field>
+      <field>
+        <name>phone_cell</name>
+      </field>
+      <field>
+        <name>email</name>
+      </field>
+      <field>
+        <name>fname_1</name>
+        <rename>referring_physician_first_name</rename>
+      </field>
+      <field>
+        <name>lname_1</name>
+        <rename>referring_physician_last_name</rename>
+      </field>
+      <field>
+        <name>name</name>
+        <rename>marketing_source_name</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort Referring docs</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Tag Referring Doc Referral Source</send_true_to>
+    <send_false_to>Clean Home Phone</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>referring_physician_id</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>352</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Table input</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>OpenEMR</connection>
+    <sql>SELECT 
+p.fname, p.lname, p.dob, p.sex, 
+p.street, p.city, p.state, p.postal_code,
+p.phone_home, p.phone_biz, p.phone_cell, p.email,
+r.fname, r.lname,
+m.name
+FROM patient_data p
+LEFT JOIN referring_physician r 
+ON p.referring_physician = r.id
+LEFT JOIN marketing_campaign m
+ON p.marketing_campaign = m.id</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>16</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Tag Referring Doc Referral Source</name>
+    <type>SetValueConstant</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>marketing_source_name</name>
+        <value>Referring Physician</value>
+        <mask />
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Update Patient Table</name>
     <type>InsertUpdate</type>
     <description />
@@ -1555,6 +1489,62 @@ ON p.marketing_campaign = m.id</sql>
     </remotesteps>
     <GUI>
       <xloc>1200</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Valid State</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>Valid State</trans_name>
+    <filename />
+    <directory_path>/Data Warehouse/SubTransformations</directory_path>
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>state</parent>
+            <child>short state</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>864</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
