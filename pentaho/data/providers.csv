@@ -1,7 +1,7 @@
-npi	first_name	last_name
-1619911575	Jeffrey	Miller
-1891755898	Steven	Wang
-1780630541	Michael	Lulenski
-1336122720	Zoe	Deol
-1861512261	Donald	La Barge
-1376502542	Michael	Bischoff
+npi,first_name,last_name
+1619911575,Jeffrey,Miller
+1891755898,Steven,Wang
+1780630541,Michael,Lulenski
+1336122720,Zoe,Deol
+1861512261,Donald,La Barge
+1376502542,Michael,Bischoff
